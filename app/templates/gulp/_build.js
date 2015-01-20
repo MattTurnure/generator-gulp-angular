@@ -44,22 +44,22 @@ gulp.task('html', ['inject', 'partials'], function () {
   return gulp.src(paths.tmp + '/serve/*.html')
     .pipe($.inject(partialsInjectFile, partialsInjectOptions))
     .pipe(assets = $.useref.assets())
-    .pipe($.rev())
+    // .pipe($.rev())
     .pipe(jsFilter)
     .pipe($.ngAnnotate())
     .pipe($.uglify({preserveComments: $.uglifySaveLicense}))
     .pipe(jsFilter.restore())
     .pipe(cssFilter)
 <% if (props.ui.key === 'bootstrap' && props.cssPreprocessor.extension === 'scss') { %>
-    .pipe($.replace('<%= computedPaths.appToBower %>/bootstrap-sass-official/assets/fonts/bootstrap', 'fonts'))
+    .pipe($.replace('<%= computedPaths.appToBower %>/bootstrap-sass-official/assets/fonts/bootstrap', '../fonts'))
 <% } else if (props.ui.key === 'bootstrap' && props.cssPreprocessor.extension === 'less') { %>
-    .pipe($.replace('<%= computedPaths.appToBower %>/bootstrap/fonts', 'fonts'))
+    .pipe($.replace('<%= computedPaths.appToBower %>/bootstrap/fonts', '../fonts'))
 <% } %>
     .pipe($.csso())
     .pipe(cssFilter.restore())
     .pipe(assets.restore())
     .pipe($.useref())
-    .pipe($.revReplace())
+    // .pipe($.revReplace())
     .pipe(htmlFilter)
     .pipe($.minifyHtml({
       empty: true,
@@ -67,6 +67,7 @@ gulp.task('html', ['inject', 'partials'], function () {
       quotes: true
     }))
     .pipe(htmlFilter.restore())
+    .pipe(gulp.dest('../resource-bundles/<%= props.staticResource %>.resource'))
     .pipe(gulp.dest(paths.dist + '/'))
     .pipe($.size({ title: paths.dist + '/', showFiles: true }));
 });
@@ -78,6 +79,7 @@ gulp.task('images', function () {
       progressive: true,
       interlaced: true
     }))<% } %>
+    .pipe(gulp.dest('../resource-bundles/<%= props.staticResource %>.resource/assets/images/'))
     .pipe(gulp.dest(paths.dist + '/assets/images/'));
 });
 
@@ -85,6 +87,7 @@ gulp.task('fonts', function () {
   return gulp.src($.mainBowerFiles())
     .pipe($.filter('**/*.{eot,svg,ttf,woff}'))
     .pipe($.flatten())
+    .pipe(gulp.dest('../resource-bundles/<%= props.staticResource %>.resource/fonts/'))
     .pipe(gulp.dest(paths.dist + '/fonts/'));
 });
 

@@ -1,9 +1,9 @@
 {
-  "name": "generator-gulp-angular",
+  "name": "generator-cs-angular",
   "version": "0.9.1",
   "preferGlobal": true,
   "description": "Yeoman generator for AngularJS with GulpJS",
-  "keywords": "yeoman-generator, angular, gulp",
+  "keywords": "yeoman-generator, angular, gulp, codescience",
   "license": "MIT",
   "author": "Matthieu Lux & Mehdy Dara",
   "contributors": [

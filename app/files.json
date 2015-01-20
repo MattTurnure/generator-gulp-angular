@@ -13,6 +13,9 @@
     "protractor.conf.js",
     "e2e/main.spec.js"
   ],
+  "staticResourceMeta": [
+    "meta.xml"
+  ],  
   "templates": [
     ".gitignore",
 

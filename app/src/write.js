@@ -27,6 +27,10 @@ module.exports = function () {
   }.bind(this);
 
   // Copy dot files
+  _.forEach(files.staticResourceMeta, function(src) {
+    this.fs.copy(this.templatePath(src),  this.destinationPath('../src/staticresources/' + this.props.staticResource + '.resource-' + src));
+  }.bind(this));  
+
   _.forEach(files.dotFiles, function(src) {
     copy(src, '.' + src);
   });
