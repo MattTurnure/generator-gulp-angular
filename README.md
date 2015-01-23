@@ -163,4 +163,4 @@ I tried many configurations for Protractor without success, any hint would be ap
 
 ## License
 
-MIT
+MIT ok
