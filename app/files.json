@@ -8,7 +8,7 @@
     "gulp/proxy.js",
     "src/favicon.ico",
     "src/404.html",
-    "src/assets/images/yeoman.png",
+    "src/assets/images/minion.png",
     "karma.conf.js",
     "protractor.conf.js",
     "e2e/main.spec.js"
